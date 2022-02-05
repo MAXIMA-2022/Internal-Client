@@ -3,8 +3,20 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons"
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const Navbar = ({name, divisi}) => {
+  const router = useRouter()
+  
+  const logout = async ()=>{
+    sessionStorage.removeItem('name')
+    sessionStorage.removeItem('divisi')
+    sessionStorage.removeItem('divisiID')
+    sessionStorage.removeItem('token')
+    router.push('/signIn')
+  }
+  
+  
   return (
     <Flex
     w={'100%'}
@@ -54,6 +66,7 @@ const Navbar = ({name, divisi}) => {
           leftIcon={<FontAwesomeIcon icon={faUserCircle}/>}
           mr={2}
           fontWeight={'bold'}
+          onClick={logout}
           >
             Logout
           </Button>
