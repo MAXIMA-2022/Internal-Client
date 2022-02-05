@@ -53,18 +53,18 @@ const signIn = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={12}>
             <InputGroup>
-              <InputLeftAddon w={'100px'} bgColor={'#19282F'}>NIM</InputLeftAddon>
+              <InputLeftAddon textColor={'white'} w={'100px'} bgColor={'#19282F'}>NIM</InputLeftAddon>
               <Input {...register('nim_coor', {required: "NIM harap diisi"})} type={'number'} borderColor={'black'} textColor={'black'} _hover={{bgColor: '#313552', textColor:'white'}} placeholder={'34995'} _placeholder={{color: 'gray.500'}}></Input>
             </InputGroup>
             <InputGroup>
-              <InputLeftAddon w={'100px'} bgColor={'#19282F'}>Password</InputLeftAddon>
+              <InputLeftAddon textColor={'white'} w={'100px'} bgColor={'#19282F'}>Password</InputLeftAddon>
               <Input {...register('password', {required: "Password harap diisi"})} type={'password'} borderColor={'black'} textColor={'black'} _hover={{bgColor: '#313552', textColor:'white'}} placeholder={'********'} _placeholder={{color: 'gray.500'}}></Input>
             </InputGroup>
             <Flex justifyContent={'center'} direction={'column'} alignItems={'center'}>
               {loading === false ? 
-              <Button type={'submit'} mb={3} w={'100px'} bgColor={'#171c26'} _hover={{bgColor: '#313552'}}>Login</Button>   
+              <Button textColor={'white'} type={'submit'} mb={3} w={'100px'} bgColor={'#171c26'} _hover={{bgColor: '#313552'}}>Login</Button>   
               :
-              <Button isLoading mb={3} w={'100px'} bgColor={'#171c26'} _hover={{bgColor: '#313552'}}>Login</Button>
+              <Button textColor={'white'} isLoading mb={3} w={'100px'} bgColor={'#171c26'} _hover={{bgColor: '#313552'}}>Login</Button>
               }
               <Text fontSize={'12px'} textColor={'gray.400'}>Belum ada akun? <Link textColor={'#d01c1f'} href={'/signUp'}>register</Link></Text>
             </Flex>

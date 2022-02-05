@@ -61,15 +61,15 @@ import Swal from 'sweetalert2'
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={10}>
               <InputGroup>
-                <InputLeftAddon w={'100px'} bgColor={'#19282F'}>NIM</InputLeftAddon>
+                <InputLeftAddon textColor={'white'} w={'100px'} bgColor={'#19282F'}>NIM</InputLeftAddon>
                 <Input {...register('nim_coor', {required: "NIM harap diisi"})} type={'number'} borderColor={'black'} textColor={'black'} _hover={{bgColor: '#313552', textColor:'white'}} placeholder={'34995'} _placeholder={{color: 'gray.500'}}></Input>
               </InputGroup>
               <InputGroup>
-                <InputLeftAddon w={'100px'} bgColor={'#19282F'}>Name</InputLeftAddon>
+                <InputLeftAddon textColor={'white'} w={'100px'} bgColor={'#19282F'}>Name</InputLeftAddon>
                 <Input {...register('name', {required: "Nama harap diisi"})} type={'text'} borderColor={'black'} textColor={'black'} _hover={{bgColor: '#313552', textColor:'white'}} placeholder={'Ed Sheeran'} _placeholder={{color: 'gray.500'}}></Input>
               </InputGroup>
               <InputGroup>
-                <InputLeftAddon w={'100px'} bgColor={'#19282F'}>Email</InputLeftAddon>
+                <InputLeftAddon textColor={'white'} w={'100px'} bgColor={'#19282F'}>Email</InputLeftAddon>
                 <Input {...register('email', {required: "Nama harap diisi"})} type={'email'} borderColor={'black'} textColor={'black'} _hover={{bgColor: '#313552', textColor:'white'}} placeholder={'ed@student.umn.ac.id'} _placeholder={{color: 'gray.500'}}></Input>
               </InputGroup>
                 <Select placeholder='Pilih Divisi' borderColor={'black'} textColor={'black'} _hover={{bgColor: '#313552', textColor:'white'}} {...register('divisi', {required: "Divisi harap dipilih"})}>
@@ -78,14 +78,14 @@ import Swal from 'sweetalert2'
                   ))}
                 </Select>
               <InputGroup>
-                <InputLeftAddon w={'100px'} bgColor={'#19282F'}>Password</InputLeftAddon>
+                <InputLeftAddon textColor={'white'} w={'100px'} bgColor={'#19282F'}>Password</InputLeftAddon>
                 <Input {...register('password', {required: "Password harap diisi"})} type={'password'} borderColor={'black'} textColor={'black'} _hover={{bgColor: '#313552', textColor:'white'}} placeholder={'********'} _placeholder={{color: 'gray.500'}}></Input>
               </InputGroup>
               <Flex justifyContent={'center'} direction={'column'} alignItems={'center'}>
                 {loading === false ? 
-                <Button type={'submit'} mb={3} w={'100px'} bgColor={'#171c26'} _hover={{bgColor: '#313552'}}>Register</Button>   
+                <Button textColor={'white'} type={'submit'} mb={3} w={'100px'} bgColor={'#171c26'} _hover={{bgColor: '#313552'}}>Register</Button>   
                 :
-                <Button isLoading mb={3} w={'100px'} bgColor={'#171c26'} _hover={{bgColor: '#313552'}}>Register</Button>
+                <Button textColor={'white'} isLoading mb={3} w={'100px'} bgColor={'#171c26'} _hover={{bgColor: '#313552'}}>Register</Button>
                 }
                 <Text fontSize={'12px'} textColor={'gray.400'}>Sudah ada akun? <Link textColor={'#d01c1f'} href={'/signIn'}>login</Link></Text>
               </Flex>
