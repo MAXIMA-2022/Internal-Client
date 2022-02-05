@@ -1,14 +1,15 @@
-import {Flex, Text, Box, Button} from '@chakra-ui/react'
+import {Flex, Text, Box, Button, Img} from '@chakra-ui/react'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons"
 import Link from 'next/link'
 
-const Navbar = () => {
+const Navbar = ({name, divisi}) => {
   return (
     <Flex
     w={'100%'}
-    // border={'solid'}
+    border={'solid'}
+    position={'fixed'}
     h={'90px'}
     bgColor={'#161c27'}
     >
@@ -31,8 +32,8 @@ const Navbar = () => {
       ml={10}
       alignItems={'center'}
       fontSize={20}>
-        <Flex>Nama Lengkap</Flex>
-        <Flex ml={20}>Divisi</Flex>  
+        <Flex>{name}</Flex>
+        <Flex ml={20}>{divisi}</Flex>  
       </Flex>
       <Flex 
       // border={'solid'}
@@ -53,7 +54,6 @@ const Navbar = () => {
           leftIcon={<FontAwesomeIcon icon={faUserCircle}/>}
           mr={2}
           fontWeight={'bold'}
-          fontSize={20}
           >
             Logout
           </Button>

@@ -41,8 +41,12 @@ export default function Home() {
   }, [])
 
   return (
-    <Flex>
-            
-    </Flex>
+    <>
+      <Navbar name={name} divisi={divisi}/>
+      <Flex border={'solid'} borderColor={'red'} justifyContent={'center'} alignItems={'center'} direction={'column'} position={'absolute'} top={'90'}>
+        
+      </Flex> 
+    </>
+
   )
 }
