@@ -3,13 +3,14 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Flex, Text, Box, Button, Image, Stack, Link,
   Input, InputGroup, InputLeftAddon, InputRightAddon
 } from '@chakra-ui/react'
 
 import {useForm} from 'react-hook-form'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import {useRouter} from 'next/router'
@@ -43,6 +44,12 @@ const signIn = () => {
       })
     }
   }
+
+  useEffect(async ()=>{
+    if(sessionStorage.getItem('token') !== null){
+      router.push('/')
+    }
+  }, [])
 
   return (
     <Flex bgColor={'#171c26'} h={'100vh'} justifyContent={'center'} alignItems={'center'}>

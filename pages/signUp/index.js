@@ -9,7 +9,7 @@ import {
     Flex, Text, Box, Button, Image, Stack, Link, Select,
     Input, InputGroup, InputLeftAddon, InputRightAddon
   } from '@chakra-ui/react'
-  
+import {useRouter} from 'next/router'
 import {useForm} from 'react-hook-form'  
 import {useEffect, useState} from 'react'
 import axios from 'axios'
@@ -19,10 +19,15 @@ import Swal from 'sweetalert2'
     const { register, handleSubmit, formState:{errors} } = useForm()
     const [divisi, setDivisi] = useState([])
     const [loading, setLoading] = useState(false)
-   
+    const router = useRouter()
+
     useEffect(async ()=>{
-      const divisi = await axios.get('https://api.mxm.one/api/divisi')
-      setDivisi(divisi.data)
+      if(sessionStorage.getItem('token')!==null){
+        router.push('/')
+      } else{
+        const divisi = await axios.get('https://api.mxm.one/api/divisi')
+        setDivisi(divisi.data)
+      }
     }, [])
 
     const onSubmit = async (data)=>{
