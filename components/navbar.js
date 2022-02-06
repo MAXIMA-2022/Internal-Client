@@ -20,7 +20,6 @@ const Navbar = ({name, divisi}) => {
   return (
     <Flex
     w={'100%'}
-    border={'solid'}
     position={'fixed'}
     h={'90px'}
     bgColor={'#161c27'}
@@ -55,22 +54,22 @@ const Navbar = ({name, divisi}) => {
       ml={'400px'}
       color={'#fff'}
       >
-          <Link href=''><a>
-          <Button
-          h={50}
-          w={150}
-          borderRadius={50}
-          justifyContent={'center'}
-          fontSize={'18px'}
-          bg={'#1b4172'}
-          leftIcon={<FontAwesomeIcon icon={faUserCircle}/>}
-          mr={2}
-          fontWeight={'bold'}
-          onClick={logout}
-          >
-            Logout
-          </Button>
-          </a></Link>
+        <Link href=''><a>
+        <Button
+        h={50}
+        w={150}
+        borderRadius={50}
+        justifyContent={'center'}
+        fontSize={'18px'}
+        bg={'#1b4172'}
+        leftIcon={<FontAwesomeIcon icon={faUserCircle}/>}
+        mr={2}
+        fontWeight={'bold'}
+        onClick={logout}
+        >
+          Logout
+        </Button>
+        </a></Link>
       </Flex>
     </Flex>
   );
