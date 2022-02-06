@@ -48,7 +48,7 @@ export default function Home() {
             nim: d.nim_mhs,
             name: d.name,
             email: d.email,
-            noHP: d.no_hp,
+            token: d.token,
             id: d.id,
             form: form,
             interview: interview

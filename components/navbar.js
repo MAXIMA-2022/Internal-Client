@@ -5,7 +5,7 @@ import { faUserCircle } from "@fortawesome/free-regular-svg-icons"
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-const Navbar = ({name, divisi}) => {
+const Navbar = ({name, divisi, status}) => {
   const router = useRouter()
   
   const logout = async ()=>{
@@ -16,13 +16,13 @@ const Navbar = ({name, divisi}) => {
     router.push('/signIn')
   }
   
-  
   return (
     <Flex
     w={'100%'}
     position={'fixed'}
     h={'90px'}
     bgColor={'#161c27'}
+    zIndex={1}
     >
       <Flex 
       // border={'solid'}
@@ -32,7 +32,7 @@ const Navbar = ({name, divisi}) => {
           <Img src='/Logo_MXM.png'
           bgColor={'white'}
           borderRadius={50}
-          h={'75px'}/>
+          h={'65px'}/>
       </Flex>
       <Flex 
       // border={'solid'}
@@ -43,8 +43,7 @@ const Navbar = ({name, divisi}) => {
       ml={10}
       alignItems={'center'}
       fontSize={20}>
-        <Flex>{name}</Flex>
-        <Flex ml={20}>{divisi}</Flex>  
+        <Flex>{name} ({divisi})</Flex> 
       </Flex>
       <Flex 
       // border={'solid'}
@@ -54,22 +53,29 @@ const Navbar = ({name, divisi}) => {
       ml={'400px'}
       color={'#fff'}
       >
-        <Link href=''><a>
-        <Button
-        h={50}
-        w={150}
-        borderRadius={50}
-        justifyContent={'center'}
-        fontSize={'18px'}
-        bg={'#1b4172'}
-        leftIcon={<FontAwesomeIcon icon={faUserCircle}/>}
-        mr={2}
-        fontWeight={'bold'}
-        onClick={logout}
-        >
-          Logout
-        </Button>
-        </a></Link>
+        {status !== 'on' ? 
+        <Link href=''>
+          <a>
+            <Button
+            h={38}
+            w={150}
+            borderRadius={50}
+            justifyContent={'center'}
+            fontSize={'18px'}
+            bg={'#1b4172'}
+            leftIcon={<FontAwesomeIcon icon={faUserCircle}/>}
+            mr={2}
+            fontWeight={'bold'}
+            onClick={logout}
+            >
+              Logout
+            </Button>
+          </a>
+        </Link>
+        :
+        <></>
+        }
+        
       </Flex>
     </Flex>
   );

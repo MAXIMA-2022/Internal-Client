@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/display-name */
-import {Flex, Box, Button, Switch, FormLabel} from '@chakra-ui/react'
 import MaterialTable from 'material-table'
 import { forwardRef, useEffect, useState } from 'react';
 import AddBox from '@material-ui/icons/AddBox';
@@ -19,8 +18,31 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 
+import Swal from 'sweetalert2'
+
+import {
+  Flex, 
+  Box, 
+  Button, 
+  Switch, 
+  FormLabel,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList
+} from '@chakra-ui/react'
+
+import Link from 'next/link'
+
+import {
+  ChevronDownIcon
+} from '@chakra-ui/icons'
+import axios from 'axios';
+import {useRouter} from 'next/router'
+
 const Table = ({data}) => {
   const [datamhs, setDataMhs] = useState([])
+  const router = useRouter()
 
   const columns = [
     {
@@ -34,6 +56,10 @@ const Table = ({data}) => {
     {
       title: "Email",
       field: "email",
+    },
+    {
+      title: "Token",
+      field: "token",
     },
     {
       title: "id",
@@ -70,10 +96,66 @@ const Table = ({data}) => {
     ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
   }
 
+  const statusForm = async (id)=>{
+    try{
+      const res = await axios.put(`https://api.mxm.one/api/divisi/registrants/formSelection/${id}`, "", {
+        headers:{
+          "x-access-token": sessionStorage.getItem('token')
+        }
+      })
+      let lulusSeleksiForm = "Tidak Lulus"
+      if(res.data.lulusSeleksiForm === 1){
+        lulusSeleksiForm = "Lulus"
+      } else if(res.data.lulusSeleksiForm === 0){
+        lulusSeleksiForm = "Tidak Lulus"
+      }
+      Swal.fire(
+        'Pengubahan Status Berhasil',
+        `${lulusSeleksiForm}`,
+        'success'
+      )
+      router.reload(window.location.pathname)
+    }catch(err){
+      Swal.fire({
+        icon: 'error',
+        text: `${err.response.data.message}`,
+        title: 'Perubahan status Gagal',
+      })
+    }
+  }
+
+  const statusInterview = async (id)=>{
+    try{
+      const res = await axios.put(`https://api.mxm.one/api/divisi/registrants/interview/${id}`, "", {
+        headers:{
+          "x-access-token": sessionStorage.getItem('token')
+        }
+      })
+      let lulusInterview = "Tidak Lulus"
+      if(res.data.lulusInterview === 1){
+        lulusInterview = "Lulus"
+      } else if(res.data.lulusInterview === 0){
+        lulusInterview = "Tidak Lulus"
+      }
+      Swal.fire(
+        'Pengubahan Status Berhasil',
+        `${lulusInterview}`,
+        'success'
+      )
+      router.reload(window.location.pathname)
+    }catch(err){
+      Swal.fire({
+        icon: 'error',
+        text: `${err.response.data.message}`,
+        title: 'Perubahan status Gagal',
+      })
+    }
+  }
+
   return (
     <>
       <MaterialTable
-        title="Employee Details"
+        title="Registrant Tables"
         data={data}
         columns={columns}
         icons={tableIcons}
@@ -86,7 +168,7 @@ const Table = ({data}) => {
         }}
         localization={{
           header:{
-            actions: "Detail"
+            actions: "Menu"
           }
         }}
         actions={[
@@ -99,7 +181,16 @@ const Table = ({data}) => {
           Action: (props) => {
             if(props.action.icon === 'check'){
               return(
-                <Button bgColor={'#1a202c'} textColor={'white'} h={'30px'} _hover={{bgColor: "#1a202c"}}>Detail</Button>
+                <Menu>
+                  <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                    :
+                  </MenuButton>
+                  <MenuList textColor={'white'} bgColor={'#1a202c'} _hover={{textColor: 'white'}} >
+                    <MenuItem _hover={{bgColor: "#1a202c"}}><Link href={`/${props.data.id}`}>Details</Link></MenuItem>
+                    <MenuItem onClick={()=>statusForm(props.data.id)} _hover={{bgColor: "#1a202c"}}>Ubah Status Form</MenuItem>
+                    <MenuItem onClick={()=>statusInterview(props.data.id)} _hover={{bgColor: "#1a202c"}}>Ubah Status Interview</MenuItem>
+                  </MenuList>
+                </Menu>
               )
             }
           }
