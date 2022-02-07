@@ -155,6 +155,7 @@ const Table = ({data}) => {
   return (
     <>
       <MaterialTable
+        style={{zIndex: 1}}
         title="Registrant Tables"
         data={data}
         columns={columns}

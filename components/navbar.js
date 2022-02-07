@@ -22,7 +22,7 @@ const Navbar = ({name, divisi, status}) => {
     position={'fixed'}
     h={'90px'}
     bgColor={'#161c27'}
-    zIndex={1}
+    zIndex={2}
     >
       <Flex 
       // border={'solid'}

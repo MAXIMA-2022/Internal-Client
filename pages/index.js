@@ -71,12 +71,11 @@ export default function Home() {
   return (
     <>
       <Navbar name={name} divisi={divisi}/>
-      <Flex bgColor='white' borderColor={'red'} justifyContent={'center'} alignItems={'center'} direction={'column'} position={'absolute'} top={'90'} h={'88vh'} w={'100%'}>
+      <Flex bgColor='white' borderColor={'red'} justifyContent={'center'} alignItems={'center'} direction={'column'} position={'absolute'} top={'90'} pt={"3.5%"} pb={"5%"} w={'100%'}>
         <Box w={'80%'}>
           <Table data={data}/>
         </Box>  
       </Flex> 
     </>
-
   )
 }
