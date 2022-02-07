@@ -186,10 +186,6 @@ const Details = ({}) => {
               <Input bgColor={'gray.200'} w={350} disabled value={`${data.line} / ${data.instagram}`} _disabled={{color: "white", bgColor: "#1a4173"}}/>
             </InputGroup>
             <InputGroup>
-              <InputLeftAddon w={"150px"} textColor={'white'} bgColor={'#1a202c'}>LINE / Instagram</InputLeftAddon>
-              <Input bgColor={'gray.200'} w={350} disabled value={`${data.line} / ${data.instagram}`} _disabled={{color: "white", bgColor: "#1a4173"}}/>
-            </InputGroup>
-            <InputGroup>
               <InputLeftAddon w={"150px"} textColor={'white'} bgColor={'#1a202c'}>Token</InputLeftAddon>
               <Input bgColor={'gray.200'} w={350} disabled value={data.token} _disabled={{color: "white", bgColor: "#1a4173"}}/>
             </InputGroup>
