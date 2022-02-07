@@ -8,7 +8,7 @@
 import {
     Flex, Text, Box, Button, Image, Stack, Link, Select,
     Input, InputGroup, InputLeftAddon, InputRightAddon
-  } from '@chakra-ui/react'
+} from '@chakra-ui/react'
 import {useRouter} from 'next/router'
 import {useForm} from 'react-hook-form'  
 import {useEffect, useState} from 'react'
@@ -79,7 +79,7 @@ import Swal from 'sweetalert2'
               </InputGroup>
                 <Select placeholder='Pilih Divisi' borderColor={'black'} textColor={'black'} _hover={{bgColor: '#313552', textColor:'white'}} {...register('divisi', {required: "Divisi harap dipilih"})}>
                   {divisi.map((d)=>(
-                    <option value={d.id}>{d.divisi}</option>
+                    <option style={{background: "#19282F", color: "white"}} value={d.id}>{d.divisi}</option>
                   ))}
                 </Select>
               <InputGroup>
