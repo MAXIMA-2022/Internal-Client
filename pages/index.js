@@ -74,7 +74,7 @@ export default function Home() {
       <Navbar name={name} divisi={divisi}/>
       <Flex bgColor='white' borderColor={'red'} justifyContent={'center'} alignItems={'center'} direction={'column'} position={'absolute'} top={'90'} pt={"3.5%"} pb={"5%"} w={'100%'}>
         <Box w={'80%'}>
-          <Table data={data}/>
+          <Table data={data} divisi={divisi}/>
         </Box>  
       </Flex> 
     </>

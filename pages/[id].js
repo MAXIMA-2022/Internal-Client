@@ -36,33 +36,38 @@ const Details = ({}) => {
 
   useEffect(async ()=>{
     try{
-      const res = await axios.get(`https://api.mxm.one/api/divisi/registrants/${id}`, {
-        headers:{
-          "x-access-token": sessionStorage.getItem('token')
+      if(sessionStorage.getItem('token') === null){
+        router.push('/signIn')
+      }
+      else{
+        const res = await axios.get(`https://api.mxm.one/api/divisi/registrants/${id}`, {
+          headers:{
+            "x-access-token": sessionStorage.getItem('token')
+          }
+        })
+        setData(res.data[0])
+  
+        if(res.data[0].lulusSeleksiForm === 1){
+          setForm('Lulus')
+        } else{
+          setForm('Tidak Lulus')
         }
-      })
-      setData(res.data[0])
-
-      if(res.data[0].lulusSeleksiForm === 1){
-        setForm('Lulus')
-      } else{
-        setForm('Tidak Lulus')
+  
+        if(res.data[0].lulusInterview === 1){
+          setInterview('Lulus')
+        } else{
+          setInterview('Tidak Lulus')
+        }
+  
+        setName(sessionStorage.getItem('name'))
+        setDivisi(sessionStorage.getItem('divisi'))
       }
-
-      if(res.data[0].lulusInterview === 1){
-        setInterview('Lulus')
-      } else{
-        setInterview('Tidak Lulus')
-      }
-
-      setName(sessionStorage.getItem('name'))
-      setDivisi(sessionStorage.getItem('divisi'))
     }catch(err){
       Swal.fire({
         icon: 'error',
-        text: `${err.response.data.message}`,
-        title: 'Perubahan status Gagal',
+        title: `${err.response.data.message}`,
       })
+      router.push('/signIn')
     }
   }, [])
 
@@ -222,7 +227,7 @@ const Details = ({}) => {
               <InputLeftAddon w={"150px"} textColor={'white'} bgColor={'#1a202c'}>Lulus Interview</InputLeftAddon>
               <Input bgColor={'gray.200'} disabled value={interview} _disabled={{color: "white", bgColor: "#1a4173"}} w={120}/>
             </InputGroup>
-            {sessionStorage.getItem('divisi') === "bph" ? 
+            {divisi === "bph" ? 
             <Flex justifyContent={'space-between'}>
               <Link href="/"><Button bgColor={'gray.700'} w={'50%'} mr={1} _hover={{bgColor: "gray.700"}} textColor='white'>Back</Button></Link>
             </Flex>

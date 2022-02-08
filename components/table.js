@@ -40,13 +40,12 @@ import {
 import axios from 'axios';
 import {useRouter} from 'next/router'
 
-const Table = ({data}) => {
+const Table = ({data, divisi}) => {
   const [datamhs, setDataMhs] = useState([])
   const router = useRouter()
 
   let columns
-
-  if(sessionStorage.getItem('divisi') === "bph"){
+  if(divisi === "bph"){
     columns = [
       {
         title: "NIM",
