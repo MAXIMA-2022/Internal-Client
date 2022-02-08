@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable react-hooks/exhaustive-deps */
 import{
@@ -221,8 +222,13 @@ const Details = ({}) => {
               <InputLeftAddon w={"150px"} textColor={'white'} bgColor={'#1a202c'}>Lulus Interview</InputLeftAddon>
               <Input bgColor={'gray.200'} disabled value={interview} _disabled={{color: "white", bgColor: "#1a4173"}} w={120}/>
             </InputGroup>
+            {sessionStorage.getItem('divisi') === "bph" ? 
             <Flex justifyContent={'space-between'}>
-            <Link href="/"><Button bgColor={'gray.700'} w={'50%'} mr={1} _hover={{bgColor: "gray.700"}} textColor='white'>Back</Button></Link>
+              <Link href="/"><Button bgColor={'gray.700'} w={'50%'} mr={1} _hover={{bgColor: "gray.700"}} textColor='white'>Back</Button></Link>
+            </Flex>
+            : 
+            <Flex justifyContent={'space-between'}>
+              <Link href="/"><Button bgColor={'gray.700'} w={'50%'} mr={1} _hover={{bgColor: "gray.700"}} textColor='white'>Back</Button></Link>
               <Menu>
                 <MenuButton bgColor={'gray.700'} w={'50%'} ml={1} _hover={{bgColor: "gray.700"}} as={Button} textColor="white">Change Status</MenuButton>
                 <MenuList>
@@ -231,6 +237,7 @@ const Details = ({}) => {
                 </MenuList>
               </Menu>
             </Flex>
+            }
           </Stack>
         </Box>
       </Flex> 

@@ -44,37 +44,69 @@ const Table = ({data}) => {
   const [datamhs, setDataMhs] = useState([])
   const router = useRouter()
 
-  const columns = [
-    {
-      title: "NIM",
-      field: "nim",
-    },
-    {
-      title: "Name",
-      field: "name",
-    },
-    {
-      title: "Email",
-      field: "email",
-    },
-    {
-      title: "Token",
-      field: "token",
-    },
-    {
-      title: "id",
-      field: "id",
-      hidden: true
-    },
-    {
-      title: "form",
-      field: "form",
-    },
-    {
-      title: "interview",
-      field: "interview",
-    },
-  ]
+  let columns
+
+  if(sessionStorage.getItem('divisi') === "bph"){
+    columns = [
+      {
+        title: "NIM",
+        field: "nim",
+      },
+      {
+        title: "Name",
+        field: "name",
+      },
+      {
+        title: "Email",
+        field: "email",
+      },
+      {
+        title: "Token",
+        field: "token",
+      },
+      {
+        title: "id",
+        field: "id",
+        hidden: true
+      },
+      {
+        title: "Divisi",
+        field: "divisi",
+      },
+    ]
+  } else{
+    columns = [
+      {
+        title: "NIM",
+        field: "nim",
+      },
+      {
+        title: "Name",
+        field: "name",
+      },
+      {
+        title: "Email",
+        field: "email",
+      },
+      {
+        title: "Token",
+        field: "token",
+      },
+      {
+        title: "id",
+        field: "id",
+        hidden: true
+      },
+      {
+        title: "form",
+        field: "form",
+      },
+      {
+        title: "interview",
+        field: "interview",
+      },
+    ]
+  }
 
   const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -182,6 +214,17 @@ const Table = ({data}) => {
           Action: (props) => {
             if(props.action.icon === 'check'){
               return(
+                <>
+                {sessionStorage.getItem('divisi') === "bph" ? 
+                <Menu>
+                  <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                    :
+                  </MenuButton>
+                  <MenuList textColor={'white'} bgColor={'#1a202c'} _hover={{textColor: 'white'}} >
+                    <MenuItem _hover={{bgColor: "#1a202c"}}><Link href={`/${props.data.id}`}>Details</Link></MenuItem>
+                  </MenuList>
+                </Menu>
+                :
                 <Menu>
                   <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                     :
@@ -192,6 +235,8 @@ const Table = ({data}) => {
                     <MenuItem onClick={()=>statusInterview(props.data.id)} _hover={{bgColor: "#1a202c"}}>Ubah Status Interview</MenuItem>
                   </MenuList>
                 </Menu>
+                }
+                </>
               )
             }
           }

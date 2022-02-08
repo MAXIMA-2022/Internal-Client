@@ -51,7 +51,8 @@ export default function Home() {
             token: d.token,
             id: d.id,
             form: form,
-            interview: interview
+            interview: interview,
+            divisi: d.divisi
           })
         })
         setData(mhs)
