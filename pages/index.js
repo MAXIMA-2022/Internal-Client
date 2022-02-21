@@ -31,6 +31,7 @@ export default function Home() {
         data['data'].map(d=>{
           let form
           let interview
+          let batch
 
           if(d.lulusSeleksiForm === 0){
             form = "Tidak Lulus"
@@ -43,6 +44,12 @@ export default function Home() {
           } else {
             interview = "Lulus"
           }
+
+          if(d.id > 116){
+            batch = 2
+          } else {
+            batch = 1
+          }
           
           mhs.push({
             nim: d.nim_mhs,
@@ -52,7 +59,8 @@ export default function Home() {
             id: d.id,
             form: form,
             interview: interview,
-            divisi: d.divisi
+            divisi: d.divisi,
+            batch: batch
           })
         })
         setData(mhs)

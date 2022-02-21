@@ -64,6 +64,10 @@ const Table = ({data, divisi}) => {
         field: "token",
       },
       {
+        title: "Batch",
+        field: "batch"
+      },
+      {
         title: "id",
         field: "id",
         hidden: true
@@ -90,6 +94,10 @@ const Table = ({data, divisi}) => {
       {
         title: "Token",
         field: "token",
+      },
+      {
+        title: "Batch",
+        field: "batch"
       },
       {
         title: "id",
